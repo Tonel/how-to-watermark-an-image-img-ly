@@ -64,11 +64,12 @@ async function watermakImage(originalImage, watermarkImagePath) {
   const blob = await result.blob();
   const image = await createImageBitmap(blob);
   const pattern = context.createPattern(image, "no-repeat");
-  context.fillStyle = pattern;
-  context.rect(0, 0, canvasWidth, canvasHeight);
-
-  // translating the watermark iamge to the bottom right corner
+  
+  // translating the watermark image to the bottom right corner
   context.translate(canvasWidth - image.width, canvasHeight - image.height);
+  context.rect(0, 0, canvasWidth, canvasHeight);
+  context.fillStyle = pattern;
+  
   context.fill();
 
   return canvas.toDataURL();
