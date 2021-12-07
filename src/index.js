@@ -12,17 +12,17 @@ fileInput.addEventListener("change", async (e) => {
 
   // adding the image watermark to the original image
   // and showing the watermarked image
-  const watermakedImage = document.querySelector("#watermakedImage");
-  const watermakedImageWithText = document.querySelector(
-    "#watermakedImageWithText"
+  const watermarkedImage = document.querySelector("#watermarkedImage");
+  const watermarkedImageWithText = document.querySelector(
+    "#watermarkedImageWithText"
   );
 
   originalImage.addEventListener("load", async () => {
-    watermakedImage.src = await watermakImage(
+    watermarkedImage.src = await watermarkImage(
       originalImage,
       "./src/IMG.LY.jpg"
     );
-    watermakedImageWithText.src = watermakImageWithText(
+    watermarkedImageWithText.src = watermarkImageWithText(
       originalImage,
       "IMG.LY"
     );
@@ -46,7 +46,7 @@ function fileToDataUri(field) {
   });
 }
 
-async function watermakImage(originalImage, watermarkImagePath) {
+async function watermarkImage(originalImage, watermarkImagePath) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
 
@@ -75,7 +75,7 @@ async function watermakImage(originalImage, watermarkImagePath) {
   return canvas.toDataURL();
 }
 
-function watermakImageWithText(originalImage, watermarkText) {
+function watermarkImageWithText(originalImage, watermarkText) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
 
